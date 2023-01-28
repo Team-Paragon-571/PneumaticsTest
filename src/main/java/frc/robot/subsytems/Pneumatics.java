@@ -28,6 +28,7 @@ public class Pneumatics extends SubsystemBase {
         addChild("Compressor", m_compressor);
         SmartDashboard.putNumber("CAN ID", m_can_id);
     }
+
     public boolean isOn() {
         return m_compressor.isEnabled();
     }
