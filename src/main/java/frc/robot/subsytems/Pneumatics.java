@@ -15,6 +15,11 @@ public class Pneumatics extends SubsystemBase {
         populate_shuffleboard();
     }
 
+    public boolean is_On()
+    {
+        return m_compressor.isEnabled();
+    }
+
     public void turn_On() {
         m_compressor.enableDigital();
     }
