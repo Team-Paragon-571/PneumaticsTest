@@ -11,7 +11,8 @@ public class ParagonSolenoid extends SubsystemBase {
     private final Solenoid m_solenoid;
     private final Pneumatics m_compressor;
 
-    public ParagonSolenoid(int can_id, int channel_id, PneumaticsModuleType module_type, String name, Pneumatics compressor) {
+    public ParagonSolenoid(int can_id, int channel_id, PneumaticsModuleType module_type, String name,
+            Pneumatics compressor) {
         m_can_id = can_id;
         m_channel_id = channel_id;
         m_solenoid = new Solenoid(can_id, module_type, channel_id);
@@ -20,8 +21,8 @@ public class ParagonSolenoid extends SubsystemBase {
         populate_shuffleboard(name);
     }
 
-    public void toggle(){
-        if(m_compressor.is_enabled()){
+    public void toggle() {
+        if (m_compressor.is_enabled()) {
             m_solenoid.toggle();
         } else {
             m_solenoid.set(false);
