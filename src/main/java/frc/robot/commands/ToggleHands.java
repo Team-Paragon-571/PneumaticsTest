@@ -9,6 +9,7 @@ import frc.robot.subsytems.ParagonSolenoid;
 
 public class ToggleHands extends CommandBase {
     public final ParagonSolenoid m_hands;
+    private final 
 
     public ToggleHands(ParagonSolenoid hands) {
         m_hands = hands;
