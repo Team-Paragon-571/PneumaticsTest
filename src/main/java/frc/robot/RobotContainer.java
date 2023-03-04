@@ -25,8 +25,7 @@ public class RobotContainer {
   private XboxController driveStick;
 
   public RobotContainer() {
-    configureBindings();
-    int can_id = 8;
+    int can_id = 20;
     int brake_channel_id = 1;
     int hand_channel_id = 0;
     PneumaticsModuleType type = PneumaticsModuleType.CTREPCM;
@@ -36,6 +35,7 @@ public class RobotContainer {
     m_brakes = new ParagonSolenoid(can_id, brake_channel_id, type, "Brakes", m_compressor);
     driveStick = new XboxController(0);
 
+    configureBindings();
   }
 
   private void configureBindings() {
