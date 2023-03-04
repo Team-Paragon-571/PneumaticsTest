@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
@@ -15,6 +16,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.ToggleBrakes;
 import frc.robot.commands.ToggleHands;
+import frc.robot.subsytems.NetworkTableSubsystem;
 import frc.robot.subsytems.ParagonSolenoid;
 import frc.robot.subsytems.Pneumatics;
 
@@ -23,6 +25,7 @@ public class RobotContainer {
   private final Pneumatics m_compressor;
   private final ParagonSolenoid m_hands;
   private final ParagonSolenoid m_brakes;
+  private final NetworkTableSubsystem ntSubsystem;
   private XboxController driveStick;
 
   public RobotContainer() {
@@ -31,7 +34,9 @@ public class RobotContainer {
     int hand_channel_id = 0;
     PneumaticsModuleType type = PneumaticsModuleType.CTREPCM;
 
-    m_compressor = new Pneumatics(can_id, type);
+    ntSubsystem = new NetworkTableSubsystem(NetworkTableInstance.getDefault());
+
+    m_compressor = new Pneumatics(can_id, type, ntSubsystem);
     m_hands = new ParagonSolenoid(can_id, hand_channel_id, type, "Hands", m_compressor);
     m_brakes = new ParagonSolenoid(can_id, brake_channel_id, type, "Brakes", m_compressor);
     driveStick = new XboxController(0);
