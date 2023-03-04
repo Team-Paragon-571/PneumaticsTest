@@ -49,7 +49,7 @@ public class RobotContainer {
 
   public void configureSmartDashboard() {
     SmartDashboard.putData("Toggle Brakes", new ToggleBrakes(m_brakes));
-
+    SmartDashboard.putData("Toggle Hands", new ToggleHands(m_hands));
   }
 
   public Command getAutonomousCommand() {
